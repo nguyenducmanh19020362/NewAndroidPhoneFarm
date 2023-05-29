@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="Code.Views.NenTang.Youtube.TangLuotDangKyView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Code.Views.NenTang.Youtube"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Style="{StaticResource mainButton}" Command="{Binding ShowPopUpWindowCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Play" Style="{StaticResource mainButtonIcon}" Foreground="GreenYellow"/>
+                            <TextBlock Text="Thực thi"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="18"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="40"
+                                   Margin="0,15,10,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource mainButton}" Command="{Binding StopAction}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Stop" Style="{StaticResource mainButtonIcon}" Foreground="Red"/>
+                            <TextBlock Text="Dừng"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="18"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="40"
+                                   Margin="0,15,10,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+                <RadioButton Style="{StaticResource mainButton}" Command="{Binding GetInformation}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Link" Style="{StaticResource mainButtonIcon}" Foreground="Wheat"/>
+                        <TextBlock Text="Lấy thông tin"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="18"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="40"
+                                   Margin="0,15,10,0"/>
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Đường dẫn"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,0,0,0"/>
+                    <TextBlock Text="Số lượt tăng"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,10,0,0"/>
+                    <TextBlock Text="Tiến độ"
+                               Grid.Column="0"
+                               Grid.Row="2"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,10,0,0"/>
+                    <TextBox Text="{Binding DuongDan}" Grid.Column="1"
+                             Grid.Row="0"
+                             Width="300"
+                             Height="30"
+                             />
+                    <TextBox Text="{Binding SoLuotTang}" Grid.Column="1"
+                             Grid.Row="1"
+                             Width="300"
+                             Height="30"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center"
+                                  Width="300" Grid.Column="1" Grid.Row="2">
+                        <ItemsControl x:Name="JobProgress">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="2" Background="Yellow" Height="Auto" ToolTip="{Binding Title}" VerticalAlignment="Center" >
+                                        <TextBlock Text="{Binding HT}" Foreground="Black" Padding="2"/>
+                                        <TextBlock Text="/" Foreground="Aqua"  Padding="2"/>
+                                        <TextBlock Text="{Binding TS}" Foreground="Red"  Padding="2"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" CanHorizontallyScroll="True">
+                                    </StackPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Thông tin kênh"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,0,0,0"/>
+                    <TextBlock Text="Tên kênh"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,0,0,0"/>
+                    <TextBlock Text="Số video"
+                               Grid.Column="0"
+                               Grid.Row="2"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,0,0,0"/>
+                    <TextBlock Text="{Binding TenKenh}"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,0,0,0"/>
+                    <TextBlock Text="{Binding SoVideo}"
+                               Grid.Column="1"
+                               Grid.Row="2"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="14"
+                                   FontFamily="Moutserrat"
+                                   FontWeight="Medium" Height="25"
+                                   Margin="20,0,0,0"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Border Grid.Row="2"
+                Background="#200F53"
+                CornerRadius="10" 
+                Padding="10">
+            <DataGrid ColumnWidth="*" Style="{StaticResource datagrid}"
+                      ItemsSource="{Binding devices}"
+                      x:Name="deviceStatus"
+                  Background="#200F53"
+                  BorderThickness="0">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="#BCBEE0"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="FontFamily" Value="Montserrat"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontWeight" Value="Medium"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="#BCBEE0"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="FontFamily" Value="Montserrat"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="FontFamily" Value="Montserrat"/>
+                        <Setter Property="FontSize" Value="15"/>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Stt}" ClipboardContentBinding="{x:Null}" Header="STT" Width="50" />
+                    <DataGridTextColumn Binding="{Binding DeviceId}" ClipboardContentBinding="{x:Null}" Header="Mã thiết bị" Width="150" />
+                    <DataGridTextColumn Binding="{Binding Status}" ClipboardContentBinding="{x:Null}" Header="Trạng thái" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Url}" ClipboardContentBinding="{x:Null}" Header="Đường Dẫn" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</UserControl>

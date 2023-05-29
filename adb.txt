@@ -1,0 +1,4 @@
+adb shell am start -a "android.settings.ADD_ACCOUNT_SETTINGS" --esa "account_types" "com.google"
+Adb shell uiautomator dump /sdcard/view.xml && Adb pull /sdcard/view.xml D:\VSCode
+adb shell input tap 
+adb shell input text
